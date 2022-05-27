@@ -9,12 +9,11 @@ class Boysgame extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: "Boys Game 4".text.xl5.bold.make().shimmer(primaryColor: Colors.deepPurple,),
+        title: "Boys Game".text.xl5.bold.make().shimmer(primaryColor: Colors.deepPurple,),
         backgroundColor: Colors.white,
       ),
       body: Column(
         children: [
-
         ],
       ),
     );

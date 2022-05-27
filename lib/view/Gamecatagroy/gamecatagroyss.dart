@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -15,7 +16,7 @@ class GameCatogeris extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: "KDK Catagroy".text.xl5.bold.make().shimmer(primaryColor: Colors.deepPurple,),
+        title: "KDK Categories".text.xl5.bold.make().shimmer(primaryColor: Colors.deepPurple,),
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(color: Colors.deepPurple),
         elevation: 0,
@@ -91,7 +92,7 @@ class Gamelist extends StatelessWidget {
                         mainAxisAlignment:MainAxisAlignment.spaceBetween,
                         children: [
                           "${snapshot.data!.data![index].title}".text.bold.ellipsis.purple400.shadow(1, 1, 1, Color(0xFF5D5F6E)).make().expand(),
-                          // IconButton(onPressed: () {  }, icon: Icon(CupertinoIcons.play_arrow_solid,color:Colors.deepPurple,),)
+                           //IconButton(onPressed: () {  }, icon: Icon(CupertinoIcons.play_arrow_solid,color:Colors.deepPurple,),),
                           Align(
                             alignment: Alignment.bottomRight,
                             child: SizedBox(
@@ -114,37 +115,7 @@ class Gamelist extends StatelessWidget {
 
                   });
             }else{
-              return  Expanded(
-                child: ListView.builder(
-                  itemCount: 5,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Shimmer.fromColors(
-                        baseColor: Colors.grey,
-                        highlightColor: Colors.grey.shade100,
-                        child: ListTile(
-                          leading:CircleAvatar(
-                            radius: 30,
-                            backgroundColor: Colors.white,
-                          ) ,
-                          title: Container(
-                            color:Colors.grey,
-                            height: 10,
-                            width: 100.h,
-                          ),
-                          subtitle:Container(
-                            color:Colors.grey,
-                            height: 10,
-                            width: 100.h,
-                          ),
-                        )
-                    );
-                  },
-                ),
-              );
-            }
-          }else{
-            return Expanded(
-              child: ListView.builder(
+              return  ListView.builder(
                 itemCount: 5,
                 itemBuilder: (BuildContext context, int index) {
                   return Shimmer.fromColors(
@@ -168,7 +139,33 @@ class Gamelist extends StatelessWidget {
                       )
                   );
                 },
-              ),
+              );
+            }
+          }else{
+            return ListView.builder(
+              itemCount: 5,
+              itemBuilder: (BuildContext context, int index) {
+                return Shimmer.fromColors(
+                    baseColor: Colors.grey,
+                    highlightColor: Colors.grey.shade100,
+                    child: ListTile(
+                      leading:CircleAvatar(
+                        radius: 30,
+                        backgroundColor: Colors.white,
+                      ) ,
+                      title: Container(
+                        color:Colors.grey,
+                        height: 10,
+                        width: 100.h,
+                      ),
+                      subtitle:Container(
+                        color:Colors.grey,
+                        height: 10,
+                        width: 100.h,
+                      ),
+                    )
+                );
+              },
             );
           }
 

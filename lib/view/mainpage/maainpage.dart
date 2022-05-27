@@ -9,13 +9,14 @@ import 'package:kdk_slots/view/gamespage/6.dart';
 
 import '../Homepage/home.dart';
 class Mainpagee extends StatefulWidget {
-  const Mainpagee({Key? key}) : super(key: key);
+  // const Mainpagee({Key? key}) : super(key: key);
 
   @override
   State<Mainpagee> createState() => _MainpageeState();
 }
 
 class _MainpageeState extends State<Mainpagee> {
+
   List page=[
     Home(),
     Kids(),

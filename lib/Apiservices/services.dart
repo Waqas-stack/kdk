@@ -28,7 +28,7 @@ class Api{
             "password":password,
             "shop_id":1.toString(),
             "password_confirmation":confirmation,
-            "key":"7793JQAGadnwkyhWDLdBdltjO"
+            "key":"8gk15MTMxywV2fWAITtvMnF3V"
           });
       var data=jsonDecode(rresponse.body.toString());
       if(rresponse.statusCode==201){
@@ -91,12 +91,12 @@ class Api{
     if(email.isNotEmpty && password.isNotEmpty){
       http.Response rresponse;
       rresponse=await http.post(
-            Uri.parse("https://kdkslots.com/api/login?username=${email}&password=${password}&shop_id=1&key=7793JQAGadnwkyhWDLdBdltjO"),
+            Uri.parse("https://kdkslots.com/api/login?username=${email}&password=${password}&shop_id=1&key=8gk15MTMxywV2fWAITtvMnF3V"),
           body: {
             "username":email,
             "password":password,
             "shop_id":1.toString(),
-            "key":"7793JQAGadnwkyhWDLdBdltjO"
+            "key":"8gk15MTMxywV2fWAITtvMnF3V"
           });
       var data=jsonDecode(rresponse.body.toString());
       if(rresponse.statusCode==200){
@@ -188,6 +188,7 @@ class Api{
     SharedPreferences sahredppre=await SharedPreferences.getInstance();
     var tttokeeen=sahredppre.getString("token");
     final response=await http.get(Uri.parse("https://kdkslots.com/api/games?&key=7793JQAGadnwkyhWDLdBdltjO&shop_id=1&cashier_id=5&page={1}"),
+
       headers: {
         'Authorization': 'Bearer $tttokeeen',
       }
@@ -200,6 +201,7 @@ class Api{
     }else{
       print(tttokeeen);
       print(data);
+      print("waqas");
       return Gaminglist.fromJson(data);
     }
   }

@@ -9,12 +9,11 @@ class Adultgame extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: "Adult Game 3".text.xl5.bold.make().shimmer(primaryColor: Colors.deepPurple,),
+        title: "Adult Game".text.xl5.bold.make().shimmer(primaryColor: Colors.deepPurple,),
         backgroundColor: Colors.white,
       ),
       body: Column(
         children: [
-
         ],
       ),
     );

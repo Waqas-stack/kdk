@@ -68,8 +68,8 @@ class _SignupState extends State<Signup> {
                     children: [
                       TextFormField(
                         decoration:const InputDecoration(
-                          hintText: "Enter Username",
-                          labelText: "Username",
+                          hintText: "Enter Your name",
+                          labelText: "Name",
                         ),
                         validator: (value){
                           if(value!.isEmpty){
@@ -79,18 +79,18 @@ class _SignupState extends State<Signup> {
                         },
                         controller: username,
                       ),
-                      TextFormField(
-                        decoration:const InputDecoration(
-                          hintText: "Enter Email",
-                          labelText: "Email",
-                        ),
-                        validator: (value){
-                          if(value!.isEmpty){
-                            return "Email Name Cannot be empty";
-                          }
-                          return null;
-                        },
-                      ),
+                      // TextFormField(
+                      //   decoration:const InputDecoration(
+                      //     hintText: "Enter Email",
+                      //     labelText: "Email",
+                      //   ),
+                      //   validator: (value){
+                      //     if(value!.isEmpty){
+                      //       return "Email Name Cannot be empty";
+                      //     }
+                      //     return null;
+                      //   },
+                      // ),
                       TextFormField(
                         obscureText: true,
                         decoration:const InputDecoration(

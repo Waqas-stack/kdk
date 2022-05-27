@@ -36,17 +36,17 @@ class MyDrawer extends StatelessWidget {
                 Get.to(GameCatogeris());
               },
               leading: Icon(CupertinoIcons.home,color:Colors.white,),
-              title: "Games Catagroy".text.white.make(),
-              subtitle: "1".text.white.make(),
+              title: "Games Categories".text.white.make(),
+              // subtitle: "1".text.white.make(),
             ),
-            // ListTile(
-            //   onTap:(){
-            //     Get.to(Eighteenplus());
-            //   },
-            //   leading: Icon(CupertinoIcons.paintbrush_fill,color:Colors.white,),
-            //   title: "18+ Games".text.white.make(),
-            //   subtitle: "2".text.white.make(),
-            // ),
+            ListTile(
+              onTap:(){
+                // Get.to(Eighteenplus());
+              },
+              leading: Icon(Icons.logout_outlined,color:Colors.white,),
+              title: "Logout".text.white.make(),
+              // subtitle: "2".text.white.make(),
+            ),
             // ListTile(
             //   onTap:(){
             //     Get.to(Adultgame());

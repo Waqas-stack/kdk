@@ -78,41 +78,13 @@ class Gamelist extends StatelessWidget {
                           )
                         ],
                       ),
-                      child:  Image.network("https://kdkslots.com/frontend/Default/ico/${snapshot.data!.data![index].name}.jpg").box.make().wh32(context),);
+                      child:  Image.network(
+                          "https://kdkslots.com/frontend/Default/ico/${snapshot.data!.data![index].name}.jpg",
+                      ).box.make().wh32(context),);
 
                   });
             }else{
-              return  Expanded(
-                child: ListView.builder(
-                  itemCount: 5,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Shimmer.fromColors(
-                        baseColor: Colors.grey,
-                        highlightColor: Colors.grey.shade100,
-                        child: ListTile(
-                          leading:CircleAvatar(
-                            radius: 30,
-                            backgroundColor: Colors.white,
-                          ) ,
-                          title: Container(
-                            color:Colors.grey,
-                            height: 10,
-                            width: 100.h,
-                          ),
-                          subtitle:Container(
-                            color:Colors.grey,
-                            height: 10,
-                            width: 100.h,
-                          ),
-                        )
-                    );
-                  },
-                ),
-              );
-            }
-          }else{
-            return Expanded(
-              child: ListView.builder(
+              return  ListView.builder(
                 itemCount: 5,
                 itemBuilder: (BuildContext context, int index) {
                   return Shimmer.fromColors(
@@ -136,7 +108,33 @@ class Gamelist extends StatelessWidget {
                       )
                   );
                 },
-              ),
+              );
+            }
+          }else{
+            return ListView.builder(
+              itemCount: 5,
+              itemBuilder: (BuildContext context, int index) {
+                return Shimmer.fromColors(
+                    baseColor: Colors.grey,
+                    highlightColor: Colors.grey.shade100,
+                    child: ListTile(
+                      leading:CircleAvatar(
+                        radius: 30,
+                        backgroundColor: Colors.white,
+                      ) ,
+                      title: Container(
+                        color:Colors.grey,
+                        height: 10,
+                        width: 100.h,
+                      ),
+                      subtitle:Container(
+                        color:Colors.grey,
+                        height: 10,
+                        width: 100.h,
+                      ),
+                    )
+                );
+              },
             );
           }
 

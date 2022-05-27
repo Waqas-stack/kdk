@@ -38,7 +38,7 @@ class Girlsgame extends StatelessWidget {
                       SizedBox(
                         height: 10,
                       ),
-                      "WaqasYosaf@gmail.com".text.make(),
+                      "WaqasYosaf@gmail.com".text.bold.make(),
                       SizedBox(
                         height: 10,
                       ),
@@ -76,7 +76,7 @@ class Girlsgame extends StatelessWidget {
                       SizedBox(
                         height: 5.h,
                       ),
-                      "About".text.bold.xl.make().box.make().centered().pOnly(right: 30.h),
+                      "About".text.bold.xl.make().box.make().centered().pOnly(right: 35.h),
                       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce porta velit odio, id hendrerit ipsum bibendum non. Nunc dictum orci quis nisi fringilla, id dapibus odio vehicula. Aenean vitae pellentesque sapien. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed sagittis, magna eu dictum interdum, elit erat lacinia quam, ".text.xl.make().p16(),
                       // "waqas waqas waqas".text.make(),
                     ],
@@ -85,37 +85,7 @@ class Girlsgame extends StatelessWidget {
                 ],
               );
             }else{
-              return  Expanded(
-                child: ListView.builder(
-                  itemCount: 5,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Shimmer.fromColors(
-                        baseColor: Colors.grey,
-                        highlightColor: Colors.grey.shade100,
-                        child: ListTile(
-                          leading:CircleAvatar(
-                            radius: 30,
-                            backgroundColor: Colors.white,
-                          ) ,
-                          title: Container(
-                            color:Colors.grey,
-                            height: 10,
-                            width: 100.h,
-                          ),
-                          subtitle:Container(
-                            color:Colors.grey,
-                            height: 10,
-                            width: 100.h,
-                          ),
-                        )
-                    );
-                  },
-                ),
-              );
-            }
-          }else{
-            return  Expanded(
-              child: ListView.builder(
+              return  ListView.builder(
                 itemCount: 5,
                 itemBuilder: (BuildContext context, int index) {
                   return Shimmer.fromColors(
@@ -139,7 +109,33 @@ class Girlsgame extends StatelessWidget {
                       )
                   );
                 },
-              ),
+              );
+            }
+          }else{
+            return  ListView.builder(
+              itemCount: 5,
+              itemBuilder: (BuildContext context, int index) {
+                return Shimmer.fromColors(
+                    baseColor: Colors.grey,
+                    highlightColor: Colors.grey.shade100,
+                    child: ListTile(
+                      leading:CircleAvatar(
+                        radius: 30,
+                        backgroundColor: Colors.white,
+                      ) ,
+                      title: Container(
+                        color:Colors.grey,
+                        height: 10,
+                        width: 100.h,
+                      ),
+                      subtitle:Container(
+                        color:Colors.grey,
+                        height: 10,
+                        width: 100.h,
+                      ),
+                    )
+                );
+              },
             );
           }
 

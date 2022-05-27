@@ -11,6 +11,7 @@ import 'package:kdk_slots/view/Registarion/login.dart';
 import 'package:kdk_slots/view/Registarion/signup.dart';
 import 'package:kdk_slots/view/mainpage/maainpage.dart';
 import 'package:sizer/sizer.dart';
+// import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 void main() async{
   await GetStorage.init();

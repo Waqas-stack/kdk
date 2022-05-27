@@ -13,7 +13,8 @@ import 'package:sizer/sizer.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import '../../Apiservices/services.dart';
-
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'dart:io' show Platform;
 class Home extends StatefulWidget {
   const  Home({Key? key}) : super(key: key);
 
@@ -22,6 +23,53 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  late  RewardedAd _ad;
+
+  final BannerAd myBanner = BannerAd(
+    adUnitId: Platform.isAndroid?"ca-app-pub-3940256099942544/6300978111":"ca-app-pub-3940256099942544/2934735716",
+    size: AdSize.banner,
+    request: AdRequest(),
+    listener: BannerAdListener(),
+  );
+
+  @override
+  void initState() {
+    super.initState();
+    myBanner.load();
+    rewarr();
+  }
+  rewarr(){
+    // ca-app-pub-3940256099942544/5224354917
+  RewardedAd.load(
+      adUnitId:  Platform.isAndroid?"ca-app-pub-3940256099942544/5224354917":"ca-app-pub-3940256099942544/1712485313",
+      request: AdRequest(),
+      rewardedAdLoadCallback: RewardedAdLoadCallback(
+          onAdLoaded: (RewardedAd ad) {
+            this._ad = ad;
+          },
+          onAdFailedToLoad: (LoadAdError error) {
+            print('RewardedAd failed to load: $error');
+          })
+  );
+}
+ void showre(){
+  _ad.show(onUserEarnedReward: (AdWithoutView ad, RewardItem rewardItem) {
+    // Reward the user for watching an ad.
+  });
+  _ad.fullScreenContentCallback = FullScreenContentCallback(
+    onAdShowedFullScreenContent: (RewardedAd ad) =>
+        print('$ad onAdShowedFullScreenContent.'),
+    onAdDismissedFullScreenContent: (RewardedAd ad) {
+      print('$ad onAdDismissedFullScreenContent.');
+      ad.dispose();
+    },
+    onAdFailedToShowFullScreenContent: (RewardedAd ad, AdError error) {
+      print('$ad onAdFailedToShowFullScreenContent: $error');
+      ad.dispose();
+    },
+    onAdImpression: (RewardedAd ad) => print('$ad impression occurred.'),
+  );
+}
   // List page=[
   //   Kids(),
   //   Eighteenplus(),
@@ -58,7 +106,25 @@ class _HomeState extends State<Home> {
           child: Column(
             crossAxisAlignment:CrossAxisAlignment.start ,
             children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 0),
+                child: Container(
+                  alignment: Alignment.center,
+                  child: AdWidget(ad: myBanner),
+                  width: myBanner.size.width.toDouble(),
+                  height: myBanner.size.height.toDouble(),
+                ),
+              ),
               Gamelist().expand(),
+      //         Padding(
+      //           padding: const EdgeInsets.symmetric(horizontal: 20),
+      //           child: Container(
+      //   alignment: Alignment.center,
+      //   child: AdWidget(ad: myBanner),
+      //   width: myBanner.size.width.toDouble(),
+      //   height: myBanner.size.height.toDouble(),
+      // ),
+      //         ),
             ],
           ),
         ),
@@ -69,6 +135,40 @@ class _HomeState extends State<Home> {
 
 class Gamelist extends StatelessWidget {
   // const Gamelist({Key? key}) : super(key: key);
+  late  RewardedAd _ad;
+  rewarr(){
+    // ca-app-pub-3940256099942544/5224354917
+    RewardedAd.load(
+        adUnitId:  Platform.isAndroid?"ca-app-pub-3940256099942544/5224354917":"ca-app-pub-3940256099942544/1712485313",
+        request: AdRequest(),
+        rewardedAdLoadCallback: RewardedAdLoadCallback(
+            onAdLoaded: (RewardedAd ad) {
+              this._ad = ad;
+            },
+            onAdFailedToLoad: (LoadAdError error) {
+              print('RewardedAd failed to load: $error');
+            })
+    );
+  }
+  void showre(){
+    _ad.show(onUserEarnedReward: (AdWithoutView ad, RewardItem rewardItem) {
+      // Reward the user for watching an ad.
+    });
+    _ad.fullScreenContentCallback = FullScreenContentCallback(
+      onAdShowedFullScreenContent: (RewardedAd ad) =>
+          print('$ad onAdShowedFullScreenContent.'),
+      onAdDismissedFullScreenContent: (RewardedAd ad) {
+        print('$ad onAdDismissedFullScreenContent.');
+        ad.dispose();
+      },
+      onAdFailedToShowFullScreenContent: (RewardedAd ad, AdError error) {
+        print('$ad onAdFailedToShowFullScreenContent: $error');
+        ad.dispose();
+      },
+      onAdImpression: (RewardedAd ad) => print('$ad impression occurred.'),
+    );
+  }
+
   gotti(){}
 Api api =Api();
   @override
@@ -105,6 +205,8 @@ Api api =Api();
                                            // shape:MaterialStateProperty.all(StadiumBorder()),
                                           ),
                               onPressed: () async{
+                                rewarr();
+                                showre();
                                 SharedPreferences sahredppre=await SharedPreferences.getInstance();
                                 var tttokeeen=sahredppre.getString("token");
                                 Navigator.push(
@@ -126,37 +228,7 @@ Api api =Api();
 
                 });
           }else{
-            return  Expanded(
-              child: ListView.builder(
-                itemCount: 5,
-                itemBuilder: (BuildContext context, int index) {
-                  return Shimmer.fromColors(
-                      baseColor: Colors.grey,
-                      highlightColor: Colors.grey.shade100,
-                      child: ListTile(
-                        leading:CircleAvatar(
-                          radius: 30,
-                          backgroundColor: Colors.white,
-                        ) ,
-                        title: Container(
-                          color:Colors.grey,
-                          height: 10,
-                          width: 100.h,
-                        ),
-                        subtitle:Container(
-                          color:Colors.grey,
-                          height: 10,
-                          width: 100.h,
-                        ),
-                      )
-                  );
-                },
-              ),
-            );
-          }
-        }else{
-          return Expanded(
-            child: ListView.builder(
+            return  ListView.builder(
               itemCount: 5,
               itemBuilder: (BuildContext context, int index) {
                 return Shimmer.fromColors(
@@ -180,7 +252,33 @@ Api api =Api();
                     )
                 );
               },
-            ),
+            );
+          }
+        }else{
+          return ListView.builder(
+            itemCount: 5,
+            itemBuilder: (BuildContext context, int index) {
+              return Shimmer.fromColors(
+                  baseColor: Colors.grey,
+                  highlightColor: Colors.grey.shade100,
+                  child: ListTile(
+                    leading:CircleAvatar(
+                      radius: 30,
+                      backgroundColor: Colors.white,
+                    ) ,
+                    title: Container(
+                      color:Colors.grey,
+                      height: 10,
+                      width: 100.h,
+                    ),
+                    subtitle:Container(
+                      color:Colors.grey,
+                      height: 10,
+                      width: 100.h,
+                    ),
+                  )
+              );
+            },
           );
         }
 
