@@ -1,5 +1,6 @@
 
 import 'dart:convert';
+import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart'as http;
@@ -11,14 +12,12 @@ import 'package:kdk_slots/model/profilemodel.dart';
 import 'package:kdk_slots/utils/routes.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../view/Registarion/login.dart';
+
 
 class Api{
 
-
-
-
-
-  Regiter(String email,String password,var confirmation)async{
+   Regiter(String email,String password,var confirmation)async{
     if(email.isNotEmpty && password.isNotEmpty){
       http.Response rresponse;
       rresponse=await http.post(
@@ -69,25 +68,7 @@ class Api{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  Loginr(String email,String password)async{
+   Loginr(String email,String password)async{
     if(email.isNotEmpty && password.isNotEmpty){
       http.Response rresponse;
       rresponse=await http.post(
@@ -182,9 +163,7 @@ class Api{
   //
   // }
 
-
-
-  Future<Gaminglist> gameslist()async{
+   Future<Gaminglist> gameslist()async{
     SharedPreferences sahredppre=await SharedPreferences.getInstance();
     var tttokeeen=sahredppre.getString("token");
     final response=await http.get(Uri.parse("https://kdkslots.com/api/games?&key=7793JQAGadnwkyhWDLdBdltjO&shop_id=1&cashier_id=5&page={1}"),
@@ -208,11 +187,7 @@ class Api{
 
 
 
-
-
-
-
-  Future<ProfileModels> Profile()async{
+   Future<ProfileModels> Profile()async{
     SharedPreferences sahredppre=await SharedPreferences.getInstance();
     var tttokeeen=sahredppre.getString("token");
     final response=await http.get(Uri.parse("https://kdkslots.com/api/me?key=7793JQAGadnwkyhWDLdBdltjO"),
@@ -234,11 +209,7 @@ class Api{
 
 
 
-
-
-
-
-  Future<GameCatgroy> gamecatagroy()async{
+   Future<GameCatgroy> gamecatagroy()async{
     SharedPreferences sahredppre=await SharedPreferences.getInstance();
     var tttokeeen=sahredppre.getString("token");
     final response=await http.get(Uri.parse("https://kdkslots.com/api/category?key=7793JQAGadnwkyhWDLdBdltjO"),
@@ -259,8 +230,7 @@ class Api{
   }
 
 
-
-  Future<GameDataa> gamedataa(int id)async{
+   Future<GameDataa> gamedataa(int id)async{
     SharedPreferences sahredppre=await SharedPreferences.getInstance();
     var tttokeeen=sahredppre.getString("token");
     final response=await http.get(Uri.parse("https://kdkslots.com/api/games?category_id=${id}&key=7793JQAGadnwkyhWDLdBdltjO"),
@@ -283,5 +253,28 @@ class Api{
 
 
 
+
+// Future<bool> tryautologin()async {
+//     var any =await SharedPreferences.getInstance();
+//     if(!any.containsKey("token")){
+//       return false;
+//     }
+//     else{
+//       return true;
+//     }
+// }
+
+
+
+
+
+
+
+
+// logut()async{
+//   final anylogut =await SharedPreferences.getInstance();
+//  anylogut.clear();
+//  Get.off(()=>Login());
+// }
 
 }

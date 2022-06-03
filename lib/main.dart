@@ -32,13 +32,13 @@ class MyApp extends StatelessWidget {
           theme: Themes().lightThem,
           darkTheme: Themes().darkThem,
           themeMode: ThemesServices().getthemeMode(),
-
           initialRoute: "/login",
           // routes: {
           //   MyRoutes.loginRoute:(context)=>Login(),
           //   "/signup":(context)=>Signup(),
           //   MyRoutes.homeRoute:(context)=>Home(),
           // },
+
          getPages: [
            GetPage( name: MyRoutes.loginRoute,page: ()=>Login(),transition:Transition.cupertino ),
            GetPage( name: MyRoutes.signupRoute,page: ()=>Signup(),transition:Transition.cupertino),

@@ -168,7 +168,7 @@ class Gamelist extends StatelessWidget {
       onAdImpression: (RewardedAd ad) => print('$ad impression occurred.'),
     );
   }
-
+//waqas
   gotti(){}
 Api api =Api();
   @override

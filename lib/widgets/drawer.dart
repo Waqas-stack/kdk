@@ -12,9 +12,11 @@ import 'package:kdk_slots/view/Gamecatagroy/gamecatagroyss.dart';
 // import 'package:kdk_slots/view/gamespage/6.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class MyDrawer extends StatelessWidget {
-  const MyDrawer({Key? key}) : super(key: key);
+import '../Apiservices/services.dart';
 
+class MyDrawer extends StatelessWidget {
+  // const MyDrawer({Key? key}) : super(key: key);
+  Api api =Api();
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -22,6 +24,19 @@ class MyDrawer extends StatelessWidget {
         color:Colors.deepPurple,
         child: ListView(
           children: [
+            DrawerHeader(child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Text(
+                //   'John Doe',
+                // ),
+            ],),
+              decoration: BoxDecoration(
+                 image: DecorationImage(
+                   image: AssetImage("assets/dk.png"),
+                   fit: BoxFit.contain                 )
+              ),
+            ),
             // DrawerHeader(
             //   padding: EdgeInsets.zero,
             //   child:UserAccountsDrawerHeader(
@@ -41,6 +56,8 @@ class MyDrawer extends StatelessWidget {
             ),
             ListTile(
               onTap:(){
+
+                // api.logut();
                 // Get.to(Eighteenplus());
               },
               leading: Icon(Icons.logout_outlined,color:Colors.white,),
